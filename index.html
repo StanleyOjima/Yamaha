@@ -3123,6 +3123,145 @@ body[data-has-light="1"]::after { opacity: 0.02; }
   max-width: 70ch;
 }
 
+/* ─── Cash position — what actually lands, after WHT ─────────────
+   Reads as a continuation of the invoice math: right-aligned,
+   same width as the totals block above it. */
+.cash {
+  max-width: 560px;
+  margin-left: auto;
+  margin-bottom: clamp(52px, 7vh, 88px);
+}
+.cash-head {
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--sec-accent, var(--accent));
+  padding-bottom: clamp(12px, 1.6vh, 16px);
+  border-bottom: 1px solid var(--sec-hairline-strong, var(--hairline-strong));
+  margin-bottom: clamp(14px, 1.9vh, 18px);
+}
+.cash-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  font-size: clamp(14px, 1.05vw, 16px);
+  color: var(--sec-ink-70, var(--ink-70));
+  padding-bottom: clamp(11px, 1.5vh, 15px);
+  margin-bottom: clamp(11px, 1.5vh, 15px);
+  border-bottom: 1px solid var(--sec-hairline, var(--hairline));
+}
+.cash-row--net {
+  border-bottom: 0;
+  border-top: 2px solid var(--sec-ink, var(--ink));
+  padding-top: clamp(15px, 2vh, 20px);
+  margin-top: clamp(4px, 0.7vh, 8px);
+  margin-bottom: 0;
+  color: var(--sec-ink, var(--ink));
+  font-weight: 500;
+}
+.cash-row--net > span:first-child {
+  font-size: clamp(13px, 1vw, 15px); font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.cash-row--net .grand-fig { font-size: clamp(26px, 3vw, 40px); }
+.cash-row .fig { font-size: clamp(14px, 1.05vw, 16px); }
+.cash-row .fig > b { color: var(--sec-ink-70, var(--ink-70)); font-weight: 400; }
+/* WHT is a deduction — parenthesised, quietened */
+.fig--less { color: var(--sec-ink-40, var(--ink-40)); }
+.fig--less::before { content: "\2212\00a0"; font-weight: 600; }
+.fig--less > b { color: var(--sec-ink-40, var(--ink-40)); }
+.fig--less > i { color: var(--sec-ink-40, var(--ink-40)); }
+.cash-foot {
+  margin-top: clamp(14px, 1.9vh, 18px);
+  font-size: clamp(12.5px, 0.92vw, 13.5px);
+  line-height: 1.5;
+  color: var(--sec-ink-40, var(--ink-40));
+}
+
+/* ─── Media tier options — the choice that moves the number ──────
+   Three reach levels, Tier 2 marked recommended. Same hairline
+   grammar as the components table so it reads as one system. */
+.tiers-lede {
+  font-size: clamp(20px, 1.9vw, 27px);
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--sec-ink, var(--ink));
+  margin-bottom: clamp(8px, 1.2vh, 14px);
+}
+.tiers-setup {
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.55;
+  color: var(--sec-ink-70, var(--ink-70));
+  max-width: 60ch;
+  margin-bottom: clamp(30px, 4vh, 44px);
+}
+.tiers { margin-bottom: clamp(24px, 3.4vh, 36px); }
+.tiers-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, auto) minmax(150px, auto);
+  gap: clamp(20px, 3vw, 48px);
+  align-items: baseline;
+  padding: 0 clamp(14px, 1.7vw, 22px) clamp(12px, 1.6vh, 16px);
+  border-bottom: 1px solid var(--sec-hairline-strong, var(--hairline-strong));
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--sec-ink-40, var(--ink-40));
+  border-left: 2px solid transparent;
+}
+.tiers-head span:nth-child(2), .tiers-head span:nth-child(3) { text-align: right; }
+.tiers-head span:nth-child(3) { color: var(--sec-ink-70, var(--ink-70)); }
+.tier {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, auto) minmax(150px, auto);
+  gap: clamp(20px, 3vw, 48px);
+  align-items: center;
+  padding: clamp(20px, 2.8vh, 28px) clamp(14px, 1.7vw, 22px);
+  border-bottom: 1px solid var(--sec-hairline, var(--hairline));
+  border-left: 2px solid transparent;
+}
+.tier--rec {
+  border-left: 2px solid var(--sec-accent, var(--accent));
+  background: var(--sec-tier-tint, rgba(75, 30, 120, 0.045));
+}
+.tier__name {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  color: var(--sec-ink, var(--ink));
+}
+.tier--rec .tier__name { color: var(--sec-accent, var(--accent)); }
+.tier__reach {
+  display: block;
+  font-size: clamp(13px, 0.98vw, 14.5px);
+  font-weight: 400;
+  color: var(--sec-ink-55, var(--ink-55));
+  margin-top: 5px;
+}
+.tier__tag {
+  display: inline-flex; align-items: center;
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #fff; background: var(--sec-accent, var(--accent));
+  padding: 3px 9px; border-radius: 999px;
+}
+.tier__wm { text-align: right; }
+.tier__wm .fig { font-size: clamp(14px, 1.05vw, 16px); }
+.tier__wm .fig > b { color: var(--sec-ink-55, var(--ink-55)); font-weight: 400; }
+.tier__wm .fig > i { color: var(--sec-ink-40, var(--ink-40)); }
+.tier__total { text-align: right; }
+.tier__total .fig {
+  justify-content: flex-end;
+  font-family: var(--serif);
+  font-size: clamp(19px, 1.9vw, 26px);
+  font-weight: 500;
+}
+.tier__total .fig > i {
+  font-family: var(--sans); font-size: 0.42em; font-weight: 600;
+  color: var(--sec-accent, var(--accent)); transform: translateY(-0.55em);
+}
+.tier--rec .tier__total .fig > b { color: var(--sec-accent, var(--accent)); }
+.tier__lbl { display: none; }
+
 /* Detailed schedule rows (III·02) */
 .sched { }
 .sched-row {
@@ -3777,6 +3916,30 @@ body[data-has-light="1"]::after { opacity: 0.02; }
   .boq-totals { max-width: 100%; }
   .boq-total--grand { font-size: 21px; }
   .boq-note { grid-template-columns: 1fr; gap: 10px; padding: 20px; }
+
+  /* Cash position — full width on mobile */
+  .cash { max-width: 100%; }
+  .cash-row--net .grand-fig { font-size: 26px; }
+
+  /* Media tiers — stack each tier: name, then two labelled figures */
+  .tiers-head { display: none; }
+  .tier {
+    grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+    padding: 22px 14px;
+    align-items: baseline;
+  }
+  .tier > div:first-child { grid-column: 1 / -1; margin-bottom: 6px; }
+  .tier__lbl {
+    display: block;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--sec-ink-40, var(--ink-40));
+    margin-bottom: 3px;
+  }
+  .tier__wm { grid-column: 1; text-align: left; }
+  .tier__total { grid-column: 2; text-align: right; }
+  .tier__wm .fig, .tier__total .fig { justify-content: flex-start; }
+  .tier__total .fig { justify-content: flex-end; }
 
   /* ── 19 · Terms ─────────────────────────────────────────── */
   .terms-h { font-size: 20px; }
@@ -4840,34 +5003,68 @@ body[data-has-light="1"]::after { opacity: 0.02; }
         <div class="boq-row reveal">
           <div><span class="boq-row__name">Retainer</span><span class="boq-row__sub">Brand, content operations, media management, community and reporting.</span></div>
           <span class="boq-row__basis">Quarterly</span>
-          <span class="boq-row__amt"><span class="fig"><i>&#8358;</i><b>19,695,000</b></span></span>
+          <span class="boq-row__amt"><span class="fig"><i>&#8358;</i><b>11,505,000</b></span></span>
         </div>
         <div class="boq-row reveal">
           <div><span class="boq-row__name">Platform build</span><span class="boq-row__sub">Design, development, commerce, integrations and launch.</span></div>
           <span class="boq-row__basis">One-off &middot; Phase 1</span>
-          <span class="boq-row__amt"><span class="fig"><i>&#8358;</i><b>31,772,000</b></span></span>
+          <span class="boq-row__amt"><span class="fig"><i>&#8358;</i><b>20,358,000</b></span></span>
         </div>
         <div class="boq-row reveal">
           <div><span class="boq-row__name">Media &amp; production</span><span class="boq-row__sub">Working media and creative production, shown at Tier 2 &middot; Reach.</span></div>
           <span class="boq-row__basis">Tiered</span>
-          <span class="boq-row__amt"><span class="fig"><i>&#8358;</i><b>41,180,000</b></span></span>
+          <span class="boq-row__amt"><span class="fig"><i>&#8358;</i><b>37,725,000</b></span></span>
         </div>
         <div class="boq-row reveal">
           <div><span class="boq-row__name">Tooling &amp; licences</span><span class="boq-row__sub">Named line items: social listening, SEO visibility, project management.</span></div>
           <span class="boq-row__basis">Quarterly &middot; at cost</span>
-          <span class="boq-row__amt"><span class="fig"><i>&#8358;</i><b>4,200,000</b></span></span>
+          <span class="boq-row__amt"><span class="fig"><i>&#8358;</i><b>3,750,000</b></span></span>
         </div>
       </div>
 
       <div class="boq-totals reveal">
-        <div class="boq-total"><span>Subtotal</span><span class="fig"><i>&#8358;</i><b>96,847,000</b></span></div>
-        <div class="boq-total"><span>VAT at 7.5%</span><span class="fig"><i>&#8358;</i><b>7,263,525</b></span></div>
-        <div class="boq-total boq-total--grand"><span>Invoice total</span><span class="grand-fig"><i>&#8358;</i><b>104,110,525</b></span></div>
+        <div class="boq-total"><span>Subtotal</span><span class="fig"><i>&#8358;</i><b>73,338,000</b></span></div>
+        <div class="boq-total"><span>VAT at 7.5%</span><span class="fig"><i>&#8358;</i><b>5,500,350</b></span></div>
+        <div class="boq-total boq-total--grand"><span>Invoice total</span><span class="grand-fig"><i>&#8358;</i><b>78,838,350</b></span></div>
+      </div>
+
+      <div class="cash reveal">
+        <p class="cash-head">Cash position</p>
+        <div class="cash-row"><span>Invoice total</span><span class="fig"><i>&#8358;</i><b>78,838,350</b></span></div>
+        <div class="cash-row"><span>Less withholding tax at 5% &middot; deducted at source</span><span class="fig fig--less"><i>&#8358;</i><b>3,666,900</b></span></div>
+        <div class="cash-row cash-row--net"><span>Net cash received</span><span class="grand-fig"><i>&#8358;</i><b>75,171,450</b></span></div>
+        <p class="cash-foot">Withholding tax is creditable against income tax &mdash; recoverable, not lost. It affects cash timing, not profit.</p>
+      </div>
+
+      <p class="tiers-lede reveal">The number moves with reach.</p>
+      <p class="tiers-setup reveal">Media is the one component that scales with ambition. The figures above are modelled on Tier&nbsp;2 &mdash; the level we recommend. Yamaha chooses where to commit.</p>
+
+      <div class="tiers reveal-group">
+        <div class="tiers-head reveal">
+          <span>Tier &middot; reach</span>
+          <span>Working media</span>
+          <span>Total engagement (&#8358;)</span>
+        </div>
+        <div class="tier reveal">
+          <div><span class="tier__name">Tier 1 &middot; Focus</span><span class="tier__reach">Lagos only, digital-led</span></div>
+          <div class="tier__wm"><span class="tier__lbl">Working media</span><span class="fig"><i>&#8358;</i><b>8,970,000</b></span></div>
+          <div class="tier__total"><span class="tier__lbl">Total engagement</span><span class="fig"><i>&#8358;</i><b>60,113,000</b></span></div>
+        </div>
+        <div class="tier tier--rec reveal">
+          <div><span class="tier__name">Tier 2 &middot; Reach <span class="tier__tag">Recommended</span></span><span class="tier__reach">Lagos + Abuja, full channel mix</span></div>
+          <div class="tier__wm"><span class="tier__lbl">Working media</span><span class="fig"><i>&#8358;</i><b>22,195,000</b></span></div>
+          <div class="tier__total"><span class="tier__lbl">Total engagement</span><span class="fig"><i>&#8358;</i><b>73,338,000</b></span></div>
+        </div>
+        <div class="tier reveal">
+          <div><span class="tier__name">Tier 3 &middot; Dominate</span><span class="tier__reach">National, sustained outdoor</span></div>
+          <div class="tier__wm"><span class="tier__lbl">Working media</span><span class="fig"><i>&#8358;</i><b>48,990,000</b></span></div>
+          <div class="tier__total"><span class="tier__lbl">Total engagement</span><span class="fig"><i>&#8358;</i><b>100,133,000</b></span></div>
+        </div>
       </div>
 
       <div class="boq-note reveal">
         <span class="boq-note__label">Basis &middot; indicative</span>
-        <p class="boq-note__body">Modelled at Tier 2 &middot; Reach media (Lagos &amp; Abuja, full channel mix) and a 3-month quarterly cycle, at a 30% agency margin on cost. Net cash after 5% WHT, deducted at source and creditable against income tax: &#8358;99,268,175. Rates are our current working assumptions, not yet confirmed against signed vendor and media cards &mdash; Annexe A carries the sourced version at contract stage.</p>
+        <p class="boq-note__body">Totals are exclusive of VAT and modelled on a 3-month quarterly cycle at a 30% agency margin on cost. Six-month outdoor commitments typically attract a 15&ndash;25% discount against month-to-month rates &mdash; not yet modelled. Rates are our current working assumptions, not yet confirmed against signed vendor and media cards; Annexe A carries the sourced version at contract stage.</p>
       </div>
 
     </div>
@@ -4900,25 +5097,25 @@ body[data-has-light="1"]::after { opacity: 0.02; }
           <span>Category</span>
           <span>Subtotal (&#8358;)</span>
         </div>
-        <div class="sched-row reveal"><span class="sched-row__num">01</span><div><span class="sched-row__name">Foundation &amp; setup</span><span class="sched-row__desc">Discovery, brand approval, catalogue and pricing structure. Phase 1.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>9,500,000</b></span></span></div>
-        <div class="sched-row reveal"><span class="sched-row__num">02</span><div><span class="sched-row__name">Platform design &amp; build</span><span class="sched-row__desc">UX/UI, front-end, commerce integrations, analytics, hosting.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>14,940,000</b></span></span></div>
-        <div class="sched-row reveal"><span class="sched-row__num">03</span><div><span class="sched-row__name">Retainer &middot; brand &amp; account</span><span class="sched-row__desc">Strategy, brand governance, client relationship, approvals.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>5,100,000</b></span></span></div>
-        <div class="sched-row reveal"><span class="sched-row__num">04</span><div><span class="sched-row__name">Content operations</span><span class="sched-row__desc">Editorial, content production, community management, publishing.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>5,400,000</b></span></span></div>
-        <div class="sched-row reveal"><span class="sched-row__num">05</span><div><span class="sched-row__name">Creative production</span><span class="sched-row__desc">Photography, motion, brand film, campaign shoots per wave.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>13,200,000</b></span></span></div>
-        <div class="sched-row reveal"><span class="sched-row__num">06</span><div><span class="sched-row__name">Media planning &amp; buying</span><span class="sched-row__desc">Paid digital, out-of-home, partnerships, influencer.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>2,400,000</b></span></span></div>
-        <div class="sched-row reveal"><span class="sched-row__num">07</span><div><span class="sched-row__name">Media budget (structural)</span><span class="sched-row__desc">Working media across the three reach levels, shown at Tier 1 &middot; Focus.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>28,300,000</b></span></span></div>
-        <div class="sched-row reveal"><span class="sched-row__num">08</span><div><span class="sched-row__name">Measurement &amp; reporting</span><span class="sched-row__desc">Analytics, dashboards, quarterly review cycle.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>2,250,000</b></span></span></div>
-        <div class="sched-row reveal"><span class="sched-row__num">09</span><div><span class="sched-row__name">Tooling &amp; licences</span><span class="sched-row__desc">Social listening, SEO visibility, project management.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>4,200,000</b></span></span></div>
+        <div class="sched-row reveal"><span class="sched-row__num">01</span><div><span class="sched-row__name">Foundation &amp; setup</span><span class="sched-row__desc">Discovery, brand approval, catalogue and pricing structure. Phase 1.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>5,700,000</b></span></span></div>
+        <div class="sched-row reveal"><span class="sched-row__num">02</span><div><span class="sched-row__name">Platform design &amp; build</span><span class="sched-row__desc">UX/UI, front-end, commerce integrations, analytics, hosting.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>9,960,000</b></span></span></div>
+        <div class="sched-row reveal"><span class="sched-row__num">03</span><div><span class="sched-row__name">Retainer &middot; brand &amp; account</span><span class="sched-row__desc">Strategy, brand governance, client relationship, approvals.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>3,000,000</b></span></span></div>
+        <div class="sched-row reveal"><span class="sched-row__num">04</span><div><span class="sched-row__name">Content operations</span><span class="sched-row__desc">Editorial, content production, community management, publishing.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>3,000,000</b></span></span></div>
+        <div class="sched-row reveal"><span class="sched-row__num">05</span><div><span class="sched-row__name">Creative production</span><span class="sched-row__desc">Photography, motion, brand film, campaign shoots per wave.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>10,100,000</b></span></span></div>
+        <div class="sched-row reveal"><span class="sched-row__num">06</span><div><span class="sched-row__name">Media planning &amp; buying</span><span class="sched-row__desc">Paid digital, out-of-home, partnerships, influencer.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>1,350,000</b></span></span></div>
+        <div class="sched-row reveal"><span class="sched-row__num">07</span><div><span class="sched-row__name">Media budget (structural)</span><span class="sched-row__desc">Paid digital, OOH and influencer activations. Superseded by the Media tiers schedule in Investment Summary &mdash; not double-counted there.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>19,760,000</b></span></span></div>
+        <div class="sched-row reveal"><span class="sched-row__num">08</span><div><span class="sched-row__name">Measurement &amp; reporting</span><span class="sched-row__desc">Analytics, dashboards, quarterly review cycle.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>1,500,000</b></span></span></div>
+        <div class="sched-row reveal"><span class="sched-row__num">09</span><div><span class="sched-row__name">Tooling &amp; licences</span><span class="sched-row__desc">Social listening, SEO visibility, project management.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>3,750,000</b></span></span></div>
         <div class="sched-row reveal"><span class="sched-row__num">10</span><div><span class="sched-row__name">Music licensing</span><span class="sched-row__desc">Cleared or composed music for all video and audio content.</span></div><span class="sched-row__amt"><span class="fig"><i>&#8358;</i><b>2,400,000</b></span></span></div>
       </div>
 
       <div class="boq-totals sched-totals reveal">
-        <div class="boq-total boq-total--grand"><span>Total direct cost</span><span class="grand-fig"><i>&#8358;</i><b>87,690,000</b></span></div>
+        <div class="boq-total boq-total--grand"><span>Total direct cost</span><span class="grand-fig"><i>&#8358;</i><b>60,520,000</b></span></div>
       </div>
 
       <div class="boq-note reveal">
         <span class="boq-note__label">Before margin &amp; VAT</span>
-        <p class="boq-note__body">This is direct cost only &mdash; the ten categories as built, before the 30% agency margin, VAT and the media-tier upgrade shown in Investment Summary. Category 07 is shown here at Tier 1 &middot; Focus; the Investment Summary total reflects the recommended Tier 2 &middot; Reach.</p>
+        <p class="boq-note__body">This is direct cost only &mdash; the ten categories as priced, before the 30% agency margin and VAT applied in Investment Summary. Category 07&#8217;s activations feed the Tier 2 media plan valued separately in Investment Summary, so it isn&#8217;t double-counted between the two pages.</p>
       </div>
 
       <p class="table-foot reveal">Annexe A carries the full schedule: line items, quantities, unit rates and line totals.</p>
